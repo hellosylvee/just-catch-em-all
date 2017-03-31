@@ -23,22 +23,17 @@ require 'httparty'
       result = "
 
 #{name.capitalize} is a type of #{type} pokémon with a base experience of #{base_xp}!"
-      # {"name"=>"pikachu", "type"=>"electric", "base_xp"=>112}
-      # binding.pry
       Pokemon.find_or_create_by(name: name)
-      puts "number of pkmn in db " + "#{Pokemon.all.length}"
+      puts "Number of pokémons in the database: " + "#{Pokemon.all.length}"
       result
     end
+
+    def search_for_pokemon_again
+      puts "Do you want to search for another pokemon again? (y/n)"
+      if gets.strip.downcase == "y"
+        get_pokemon_name_from_user
+      else
+        "goodbye friend! See ya next time!"
+      end
+    end
   end
-
-
-
-# response = RestClient.get("https://phalt-pokeapi.p.mashape.com/pokemon",
-#   {
-#     "X-Mashape-Key" => "lC9qQhTl1tmshbvcCkjNA3b3WgEmp1OqHEzjsnEX23DqhR8FNa",
-#     "Accept" => "application/json"
-#   }
-# )
-
-# binding.pry
-# "hi"
